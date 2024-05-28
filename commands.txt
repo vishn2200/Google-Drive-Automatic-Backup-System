@@ -1,9 +1,0 @@
-C:\Users\jeril\Desktop\engineering\sem6\cc_project>kubectl create secret generic google-credentials --from-file=client_secret_912153419985-mulrp66u9s4qrcfshb5nmc80sj4d1vqu.apps.googleusercontent.com.json=C:\Users\jeril\Desktop\engineering\sem6\cc_project\client_secret_912153419985-mulrp66u9s4qrcfshb5nmc80sj4d1vqu.apps.googleusercontent.com.json secret/google-credentials
-
-kubectl describe secret google-credentials
-
-kubectl get secret google-credentials -o yaml
-
-kubectl apply -f backup_cronjob.yaml
-
-

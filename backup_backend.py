@@ -8,26 +8,6 @@ import os
 import os.path
 import logging
 
-import tkinter as tk
-from tkinter import messagebox
-
-# def show_warning():
-    
-
-# Create a Tkinter window
-
-# root.withdraw()  # Hide the root window
-# root.title("Warning Box Example")
-
-# Create a button to trigger the warning
-# warning_button = tk.Button(root, text="Show Warning", command=show_warning)
-# warning_button.pack(pady=20)
-
-# Run the Tkinter event loop
-
-
-
-
 
 logging.basicConfig(filename='backup.log', level=logging.INFO)
 def backup_data():
@@ -35,7 +15,6 @@ def backup_data():
     logging.info('Backup operation started...')
     # Your backup logic here
     logging.info('Backup operation completed successfully.')
-
 
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
@@ -57,7 +36,7 @@ def authenticate():
         if not creds:
             try:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'client_secret_912153419985-mulrp66u9s4qrcfshb5nmc80sj4d1vqu.apps.googleusercontent.com.json', SCOPES)  # Ensure this is the correct path to your client secret file
+                    'credentials.json', SCOPES)  # Ensure this is the correct path to your client secret file
                 creds = flow.run_local_server(port=8080)
                 with open('token.json', 'w') as token:
                     token.write(creds.to_json())
@@ -79,15 +58,10 @@ def upload_file(service, file_path, file_name, mime_type, parent_folder_id=None)
         print(f"File ID: {file.get('id')}")
     except Exception as e:
         print(f"Failed to upload file: {e}")
-        # root = tk.Tk()
-        # # root.withdraw()  # Hide the root window
-        # messagebox.showwarning("error!","Failed to upload file: {e}")
-        # root.mainloop()
-        # root.destroy()
-
 
 def upload_folder(service, folder_path, parent_folder_id=None):
     """Uploads a folder and its contents to Google Drive."""
+    print("Folders will upload now...")
     try:
         folder_name = os.path.basename(folder_path)
         folder_metadata = {'name': folder_name, 'mimeType': 'application/vnd.google-apps.folder'}
@@ -110,9 +84,7 @@ def upload_folder(service, folder_path, parent_folder_id=None):
 def main():
     service = authenticate()
     backup_data()
-    upload_file(service, 'test.txt', 'test.txt', 'text/plain')
-    # upload_file(service, 'AFX.png', 'AFX.png', 'image/png') 
-    # upload_folder(service, 'testfolder')
+    upload_folder(service, 'tocopy')
 
 if __name__ == '__main__':
     main()

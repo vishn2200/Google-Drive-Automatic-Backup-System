@@ -4,23 +4,19 @@ metadata:
   name: my-python-cronjob
 spec:
   schedule: "*/1 * * * *"  
-  suspend: true
+  # suspend: true
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: backend-service-container
-            image: jeriljoshy/my-backup:latest
-            # volumeMounts:
-            # - name: google-credentials-volume
-            #   mountPath: /client_secret_912153419985-mulrp66u9s4qrcfshb5nmc80sj4d1vqu.apps.googleusercontent.com.json
-            #   readOnly: true
+          - name: backup-service
+            image: vandanaa25/backup-service:latest
           restartPolicy: OnFailure
           volumes:
           - name: data-volume
             persistentVolumeClaim:
-              claimName: my-data-pvc  # Name of the PersistentVolumeClaim
+              claimName: my-data-pvc 
           - name: google-credentials-volume
             secret:
               secretName: google-credentials
@@ -40,12 +36,3 @@ spec:
       storage: 1Gi
 
 
-# ---
-
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: google-api-secret
-# type: Opaque
-# data:
-#   client_secret.json: /encoded_credentials.txt

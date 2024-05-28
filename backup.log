@@ -49,3 +49,13 @@ INFO:root:Backup operation completed successfully.
 INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
 INFO:root:Backup operation started...
 INFO:root:Backup operation completed successfully.
+INFO:google_auth_oauthlib.flow:"GET /?state=9foapMjDeU8m8fRl53jtwPoa06Mcrf&code=4/0AeaYSHAstV5GcLGwMIumiySSlKgE9uwvH5vJ6LF988ptD4vD57cGVhv4_h6JMeUC_p_2tg&scope=https://www.googleapis.com/auth/drive.file HTTP/1.1" 200 65
+INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
+INFO:root:Backup operation started...
+INFO:root:Backup operation completed successfully.
+INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
+INFO:root:Backup operation started...
+INFO:root:Backup operation completed successfully.
+INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
+INFO:root:Backup operation started...
+INFO:root:Backup operation completed successfully.
